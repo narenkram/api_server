@@ -2,6 +2,7 @@ import express, { Request, Response } from 'express';
 import axios from 'axios';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import subscriptionsRouter from './routes/subscriptions';
 
 // Load environment variables
 dotenv.config();
@@ -12,6 +13,7 @@ const port = process.env.PORT || 3000;
 // Middleware
 app.use(cors());
 app.use(express.json());
+app.use('/subscriptions', subscriptionsRouter);
 
 // Health check endpoint
 app.get('/', (req: Request, res: Response) => {
